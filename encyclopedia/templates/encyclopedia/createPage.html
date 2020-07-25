@@ -1,0 +1,21 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Create New Page
+{% endblock %}
+
+{% block body %}
+    <h1>Create a new page!</h1>
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div {% if message.tags %} class="{{ message.tags }} alert alert-danger col-4"{% endif %}>{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    <form action="{% url 'tasks:createPage' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input class="btn btn-primary mt-3" type="submit">
+    </form>
+{% endblock %}

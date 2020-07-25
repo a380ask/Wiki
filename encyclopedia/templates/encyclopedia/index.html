@@ -1,0 +1,21 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <h1>All Pages</h1>
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div {% if message.tags %} class="{{ message.tags }} alert alert-success col-4"{% endif %}>{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    <ul>
+        {% for entry in entries %}
+        <li><a href="{% url 'tasks:getEntry' entry %}">{{ entry }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ name }}
+{% endblock %}
+
+{% block body %}
+    <a class="btn btn-warning" href="{% url 'tasks:editPage' name %}">Edit this!</a>
+    <a class="btn btn-danger" href="{% url 'tasks:delete' name %}">Delete this!</a>
+    {{ file|safe }}
+{% endblock %}
